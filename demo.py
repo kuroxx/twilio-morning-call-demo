@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from src.rss_parser import RSSParser
 from src.openai_client import OpenAIClient
 

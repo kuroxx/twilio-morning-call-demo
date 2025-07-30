@@ -43,7 +43,19 @@ class OpenAIClient:
         Keep summaries under {max_length} words and make them natural for text-to-speech.
         Remove any special characters that don't sound good when spoken."""
         
-        prompt = f"Please summarize this text for voice reading: {text}"
-        
+        prompt = f"""Please analyze the following news content and create a voice-friendly summary focusing on developer-relevant information:
+
+        CONTENT: {text}
+
+        REQUIREMENTS:
+        - Focus on: APIs, programming languages, frameworks, developer tools, tech companies, software releases, security issues, and industry trends
+        - Exclude: General business news, marketing content, and non-technical announcements  
+        - Keep summary conversational and natural for text-to-speech
+        - Use simple sentences and avoid complex punctuation
+        - Include specific version numbers, dates, or key details when relevant
+        - If no developer-relevant content is found, respond with "No developer news found in this content"
+
+        Format as a brief, engaging summary suitable for a morning news briefing."""
+
         return self.send_prompt(prompt, system_message)
     
